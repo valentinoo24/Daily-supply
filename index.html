@@ -1,0 +1,287 @@
+ <!DOCTYPE html>
+
+<html lang="nl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DAILY SUPPLY — Designer Resale</title>
+
+<meta name="description" content="Discover curated designer fashion at Daily Supply.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{--black:#111;--cream:#f5f3ee;--grey:#888}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{background:var(--cream);color:var(--black);font-family:'DM Sans',sans-serif}
+
+a{color:inherit;text-decoration:none}
+
+.announcement{background:#111;color:white;text-align:center;padding:10px;font-size:10px;letter-spacing:2px}
+
+nav{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:var(--cream);position:sticky;top:0;z-index:10;border-bottom:1px solid #ddd}
+
+.logo{font-size:23px;font-weight:800;letter-spacing:-1.5px}
+
+.logo span{font-weight:400}
+
+.navlinks{display:flex;gap:30px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+
+.navright{font-size:12px;letter-spacing:1px}
+
+.hero{min-height:690px;height:85vh;position:relative;display:flex;align-items:center;overflow:hidden;background:#555}
+
+.hero img{position:absolute;width:100%;height:100%;object-fit:cover;filter:brightness(.65);animation:zoom 15s ease-in-out infinite alternate}
+
+@keyframes zoom{to{transform:scale(1.08)}}
+
+.hero-content{position:relative;color:white;padding:8%;max-width:750px}
+
+.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:22px}
+
+.hero h1{font-size:clamp(55px,9vw,115px);line-height:.9;letter-spacing:-7px;font-weight:600}
+
+.hero h1 em{font-family:'Playfair Display',serif;font-weight:500}
+
+.hero p{font-size:13px;letter-spacing:1px;margin:28px 0}
+
+.btn{display:inline-block;padding:16px 28px;background:white;color:#111;font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:.3s}
+
+.btn:hover{background:#bbb;transform:translateY(-3px)}
+
+.section{padding:100px 7%}
+
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:38px}
+
+.section-head h2{font-size:clamp(30px,5vw,52px);letter-spacing:-2px}
+
+.section-head p{font-size:11px;color:var(--grey);letter-spacing:2px}
+
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+
+.category{height:390px;position:relative;overflow:hidden;background:#ddd}
+
+.category img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+
+.category:hover img{transform:scale(1.07)}
+
+.category:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,#0008)}
+
+.category span{position:absolute;bottom:25px;left:25px;color:white;font-size:24px;z-index:1}
+
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+
+.product{cursor:pointer}
+
+.product-image{height:340px;background:#e6e3dc;overflow:hidden;position:relative}
+
+.product-image img{width:100%;height:100%;object-fit:cover;transition:.6s}
+
+.product:hover img{transform:scale(1.05)}
+
+.tag{position:absolute;top:12px;left:12px;background:white;padding:7px 10px;font-size:9px;letter-spacing:1px}
+
+.product-info{padding:15px 2px}
+
+.product-info h3{font-size:12px;font-weight:600;margin-bottom:7px}
+
+.product-info p{font-size:11px;color:#777}
+
+.price{font-size:13px!important;color:#111!important;margin-top:10px;font-weight:700}
+
+.editorial{display:grid;grid-template-columns:1fr 1fr;min-height:600px;background:#dedbd3}
+
+.editorial img{width:100%;height:100%;max-height:650px;object-fit:cover}
+
+.editorial-text{display:flex;flex-direction:column;justify-content:center;padding:12%}
+
+.editorial-text h2{font-size:clamp(38px,5vw,65px);line-height:1;letter-spacing:-3px;margin:20px 0}
+
+.editorial-text p{font-size:13px;line-height:1.9;color:#555;margin-bottom:25px}
+
+.editorial-text .btn{background:#111;color:white;align-self:flex-start}
+
+.marquee{overflow:hidden;background:#111;color:white;padding:23px 0;white-space:nowrap;font-size:18px;letter-spacing:5px}
+
+.marquee div{display:inline-block;animation:move 22s linear infinite}
+
+@keyframes move{to{transform:translateX(-50%)}}
+
+footer{background:#111;color:white;padding:65px 7% 30px}
+
+.footer-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+
+footer h2{font-size:35px;letter-spacing:-2px}
+
+footer p{font-size:11px;color:#aaa;line-height:2;margin-top:15px}
+
+.footer-bottom{border-top:1px solid #444;margin-top:60px;padding-top:20px;font-size:10px;color:#888;display:flex;justify-content:space-between}
+
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s ease}
+
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:750px){
+
+ nav{padding:0 5%;height:65px}.navlinks{gap:12px;font-size:9px}.navright{display:none}
+
+ .hero{height:75vh;min-height:550px}.hero h1{letter-spacing:-4px}
+
+ .section{padding:65px 5%}.categories{grid-template-columns:1fr 1fr}.category{height:260px}
+
+ .products{grid-template-columns:1fr 1fr;gap:12px}.product-image{height:240px}
+
+ .editorial{grid-template-columns:1fr}.editorial img{height:400px}
+
+ .editorial-text{padding:12% 8%}.section-head{align-items:start;gap:15px;flex-direction:column}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="announcement">COMPLIMENTARY SHIPPING ON ORDERS OVER €150</div>
+
+<nav>
+
+<a class="logo" href="#">DAILY<span>SUPPLY.</span></a>
+
+<div class="navlinks">
+
+<a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">About</a>
+
+</div>
+
+<a class="navright" href="#shop">BAG (0)</a>
+
+</nav>
+
+<header class="hero">
+
+<img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=2000" alt="Fashion editorial">
+
+<div class="hero-content">
+
+<div class="eyebrow">The new generation of designer resale</div>
+
+<h1>STYLE<br>WITHOUT<br><em>LIMITS.</em></h1>
+
+<p>Curated pieces. Timeless design. Everyday statement.</p>
+
+<a class="btn" href="#shop">Explore collection ↗</a>
+
+</div>
+
+</header>
+
+<section class="section reveal" id="collections">
+
+<div class="section-head"><h2>Find your style.</h2><p>01 — THE COLLECTIONS</p></div>
+
+<div class="categories">
+
+<a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800" alt="Streetwear"><span>Streetwear ↗</span></a>
+
+<a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800" alt="Designer"><span>Designer ↗</span></a>
+
+<a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800" alt="Essentials"><span>Essentials ↗</span></a>
+
+</div>
+
+</section>
+
+<div class="marquee"><div> DAILY SUPPLY ✳ CURATED DESIGNER ✳ PRE-LOVED LUXURY ✳ DAILY SUPPLY ✳ CURATED DESIGNER ✳ PRE-LOVED LUXURY ✳ </div></div>
+
+<section class="section reveal" id="shop">
+
+<div class="section-head"><h2>Latest arrivals.</h2><p>02 — HANDPICKED FOR YOU</p></div>
+
+<div class="products">
+
+<div class="product"><div class="product-image"><span class="tag">NEW IN</span><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=700" alt="Leather jacket"></div><div class="product-info"><h3>Vintage Leather Jacket</h3><p>Outerwear · Size M</p><p class="price">€185,00</p></div></div>
+
+<div class="product"><div class="product-image"><span class="tag">RARE FIND</span><img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=700" alt="Designer hoodie"></div><div class="product-info"><h3>Premium Essential Hoodie</h3><p>Streetwear · Size L</p><p class="price">€120,00</p></div></div>
+
+<div class="product"><div class="product-image"><span class="tag">EDITOR'S PICK</span><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700" alt="Sneakers"></div><div class="product-info"><h3>Classic Statement Sneakers</h3><p>Footwear · Size 42</p><p class="price">€160,00</p></div></div>
+
+<div class="product"><div class="product-image"><span class="tag">JUST ADDED</span><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700" alt="Designer bag"></div><div class="product-info"><h3>Everyday Designer Bag</h3><p>Accessories · One size</p><p class="price">€210,00</p></div></div>
+
+</div>
+
+<p style="font-size:10px;color:#888;margin-top:25px">Product images and descriptions are demo content. Replace with your actual stock before selling.</p>
+
+</section>
+
+<section class="editorial reveal" id="about">
+
+<img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=1100" alt="Fashion collection">
+
+<div class="editorial-text">
+
+<div class="eyebrow">03 — Our philosophy</div>
+
+<h2>Less hype.<br>More style.</h2>
+
+<p>Daily Supply is all about discovering pieces that deserve a second life. From everyday essentials to standout designer finds, we bring together a curated world of fashion.</p>
+
+<a class="btn" href="#shop">Discover more ↗</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-top">
+
+<div><h2>DAILY SUPPLY.</h2><p>Curated fashion. A new perspective.<br>Made for everyday expression.</p></div>
+
+<div><p>INFORMATION<br><br>Shipping & Returns<br>Contact<br>Instagram</p></div>
+
+<div><p>THE DETAILS<br><br>Authenticity matters<br>Carefully curated<br>Second life, first choice</p></div>
+
+</div>
+
+<div class="footer-bottom"><span>© 2026 DAILY SUPPLY</span><span>DESIGNED TO BE DISCOVERED.</span></div>
+
+</footer>
+
+<script>
+
+const observer=new IntersectionObserver(entries=>{
+
+ entries.forEach(entry=>{
+
+  if(entry.isIntersecting){
+
+   entry.target.classList.add('visible');
+
+   observer.unobserve(entry.target);
+
+  }
+
+ });
+
+},{threshold:.12});
+
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+</script>
+
+</body>
+
+</html>
